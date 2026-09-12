@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Good Neighbors Home Healthcare Service</title>
+    <style>
+        :root {
+            --primary: #0f766e;
+            --primary-dark: #115e59;
+            --primary-light: #f0fdfa;
+            --text-main: #334155;
+            --text-muted: #64748b;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --border-color: #cbd5e1;
+            --accent-emergency: #dc2626;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 20px 10px;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--white);
+            padding: 35px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        header p.tagline {
+            font-size: 1rem;
+            opacity: 0.95;
+            font-style: italic;
+        }
+
+        /* Banner section updated to stretch edge-to-edge with a controlled height */
+        .flyer-banner {
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            background: var(--bg-light);
+            border-bottom: 1px solid var(--border-color);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 0;
+            background: var(--bg-light);
+            border-bottom: 1px solid var(--border-color);
+            overflow: hidden;
+             
+        }
+
+        .flyer-banner img {
+            width: 750px;
+            height: auto;
+            max-height: 200px;
+            object-fit: cover;
+            display: block;
+            border-radius: 0;
+            border-radius: 8px;
+        }
+
+        .content-section {
+            padding: 30px 20px;
+        }
+
+        .intro {
+            font-size: 1.05rem;
+            margin-bottom: 25px;
+        }
+
+        .vision-box {
+            background-color: var(--primary-light);
+            border-left: 4px solid var(--primary);
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 30px;
+        }
+
+        .vision-box h2 {
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+            margin-bottom: 8px;
+        }
+
+        h2.section-title {
+            font-size: 1.3rem;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--bg-light);
+            padding-bottom: 8px;
+        }
+
+        /* AI Assistant Styling */
+        .ai-assistant {
+            background: var(--primary-light);
+            border: 1px solid var(--primary);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .lang-switch {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .lang-btn {
+            background: var(--white);
+            border: 1px solid var(--primary);
+            color: var(--primary-dark);
+            padding: 4px 12px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .chat-box {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            height: 220px;
+            overflow-y: auto;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .chat-msg {
+            padding: 8px 12px;
+            border-radius: 6px;
+            max-width: 85%;
+            font-size: 0.95rem;
+        }
+
+        .bot-msg { 
+            background: var(--primary-light); 
+            color: var(--primary-dark); 
+            align-self: flex-start; 
+            border: 1px solid var(--border-color); 
+        }
+
+        .user-msg { 
+            background: var(--primary); 
+            color: white; 
+            align-self: flex-end; 
+            text-align: right; 
+        }
+
+        .chat-input-group {
+            display: flex;
+            gap: 8px;
+        }
+
+        .chat-input-group input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+        }
+
+        /* Services & Values */
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        @media (min-width: 600px) {
+            .services-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        .service-item {
+            background: var(--bg-light);
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .service-item::before {
+            content: "•";
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        .values-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .value-badge {
+            background-color: var(--primary-light);
+            color: var(--primary-dark);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Medical Request Form Styling */
+        .request-form {
+            background: var(--bg-light);
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--primary-dark);
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="tel"],
+        .form-group input[type="file"],
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 1rem;
+            background: var(--white);
+        }
+
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        @media (min-width: 600px) {
+            .checkbox-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--white);
+            padding: 8px 12px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 12px 18px;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            color: white;
+            transition: opacity 0.2s;
+        }
+
+        .btn:hover { opacity: 0.9; }
+        .btn-whatsapp { background-color: #25D366; }
+        .btn-group-wa { background-color: #128C7E; }
+        .btn-sms { background-color: #0284c7; }
+        .btn-email { background-color: var(--primary); }
+
+        /* Contact & Emergency Styling */
+        .emergency-banner {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #991b1b;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .contact-card {
+            background: var(--bg-light);
+            border-radius: 8px;
+            padding: 25px;
+            border: 1px solid var(--border-color);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 600px) {
+            .contact-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        .contact-group h3 {
+            font-size: 1rem;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .phone-row {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .phone-row:last-child { border-bottom: none; }
+
+        .phone-actions {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .action-chip {
+            font-size: 0.75rem;
+            padding: 3px 8px;
+            border-radius: 4px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+        }
+
+        .action-call { background-color: #16a34a; }
+        .action-wa { background-color: #25D366; }
+        .action-sms { background-color: #0284c7; }
+
+        footer {
+            background: var(--text-main);
+            color: var(--white);
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <img src="image.jpeg" alt="">
+    <div class="container">
+        <header>
+            <h1>Good Neighbors Home Healthcare Service</h1>
+            <p class="tagline">"Good healthcare should not always require a journey to the hospital or clinic."</p>
+        </header>
+
+        <!-- Promotional Flyer Image Banner (Full side-to-side width, controlled height) -->
+        <div class="flyer-banner">
+            <img src="image_c56ca7.jpg" alt="Good Neighbors Healthcare Home Service Promotional Flyer">
+        </div>
+
+        <div class="content-section">
+            <p class="intro">
+                Good Neighbors Home Healthcare Service provides convenient, compassionate and professional healthcare support in the comfort of your home.
+            </p>
+
+            <div class="vision-box">
+                <h2>Our Vision</h2>
+                <p>To make quality healthcare more accessible while promoting health education, prevention and responsible healthcare practices within our communities.</p>
+            </div>
+
+            <!-- AI Interrogation / Triage Section -->
+            <h2 class="section-title">AI Health Assistant</h2>
+            <div class="ai-assistant">
+                <div class="lang-switch">
+                    <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">Select Assistant Language / Pick Spoken Language:</span>
+                    <div>
+                        <button type="button" class="lang-btn active" id="btn-krio" onclick="setLanguage('krio')">Krio</button>
+                        <button type="button" class="lang-btn" id="btn-en" onclick="setLanguage('english')">English</button>
+                    </div>
+                </div>
+
+                <div class="chat-box" id="chatBox">
+                    <div class="chat-msg bot-msg" id="initialBotMsg">
+                        <strong>AI Assistant:</strong> Kusheh! Welcome to Good Neighbors Home Healthcare. Wetin de do you today? Describe how you de feel.
+                    </div>
+                </div>
+                <div class="chat-input-group">
+                    <input type="text" id="userInput" placeholder="Type response here / Nait ya wetin de do you..." onkeydown="if(event.key==='Enter') sendMessage()">
+                    <button class="btn btn-email" type="button" onclick="sendMessage()">Send</button>
+                </div>
+            </div>
+
+            <!-- Services Offered -->
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-item">Home-based health consultations and assessments</div>
+                <div class="service-item">Basic nursing and supportive care</div>
+                <div class="service-item">Medication-related support and education</div>
+                <div class="service-item">Health monitoring</div>
+                <div class="service-item">Health education and counselling</div>
+                <div class="service-item">Support for elderly and dependent patients</div>
+                <div class="service-item">Post-treatment and recovery support</div>
+                <div class="service-item">Referral to appropriate healthcare facilities when necessary</div>
+            </div>
+
+            <!-- Core Values -->
+            <h2 class="section-title">Our Core Values</h2>
+            <div class="values-list">
+                <span class="value-badge">Professionalism</span>
+                <span class="value-badge">Compassion</span>
+                <span class="value-badge">Confidentiality</span>
+                <span class="value-badge">Putting the patient's wellbeing first</span>
+            </div>
+
+            <!-- Quick Emergency / Medical Request Form -->
+            <h2 class="section-title">Request Quick Medical Attention</h2>
+            <form class="request-form" id="patientForm" onsubmit="event.preventDefault();">
+                <div class="form-group">
+                    <label for="fullName">Full Name *</label>
+                    <input type="text" id="fullName" required placeholder="Enter your full name">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone / Contact Number *</label>
+                    <input type="tel" id="phone" required placeholder="e.g. +23275123456">
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Home Address / Location *</label>
+                    <input type="text" id="address" required placeholder="e.g. Koronbo Lane, Wellington">
+                </div>
+
+                <div class="form-group">
+                    <label>Select what is aching or affecting you:</label>
+                    <div class="checkbox-grid">
+                        <label class="checkbox-item"><input type="checkbox" name="sickness" value="Fever / High Temp"> Fever / High Body Temp</label>
+                        <label class="checkbox-item"><input type="checkbox" name="sickness" value="Malaria Symptoms / Body Pain"> Malaria Symptoms / Body Pain</label>
+                        <label class="checkbox-item"><input type="checkbox" name="sickness" value="Severe Headache"> Severe Headache</label>
+                        <label class="checkbox-item"><input type="checkbox" name="sickness" value="Stomach Pain / Vomiting"> Stomach Pain / Vomiting</label>
+                        <label class="checkbox-item"><input type="checkbox" name="sickness" value="High BP / Dizziness"> High BP / Dizziness</label>
+                        <label class="checkbox-item"><input type="checkbox" name="sickness" value="Wound Care / Dressing"> Wound Dressing / Care</label>
+                        <label class="checkbox-item"><input type="checkbox" name="sickness" value="Elderly Patient Support"> Elderly Patient Support</label>
+                        <label class="checkbox-item"><input type="checkbox" name="sickness" value="Cough / Chest Pain"> Cough / Chest Pain</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="additionalDetails">Other Symptoms / Notes</label>
+                    <textarea id="additionalDetails" rows="3" placeholder="Describe how long it has been aching or any specific details..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="medicalFile">Attach Medical Records / Prescription / Photo (Optional)</label>
+                    <input type="file" id="medicalFile" accept="image/*,.pdf,.doc,.docx">
+                    <small style="color: var(--text-muted); display: block; margin-top: 4px;">Upload relevant medical history or clear pictures of symptoms if available.</small>
+                </div>
+
+                <p style="font-weight: 600; margin-bottom: 10px; color: var(--primary-dark);">Submit Request Immediately Via:</p>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-whatsapp" onclick="dispatchRequest('wa-direct')">Direct WhatsApp</button>
+                    <button type="button" class="btn btn-group-wa" onclick="dispatchRequest('wa-group')">WhatsApp Group</button>
+                    <button type="button" class="btn btn-sms" onclick="dispatchRequest('sms')">Send via SMS</button>
+                    <button type="button" class="btn btn-email" onclick="dispatchRequest('email')">Send via Email</button>
+                </div>
+            </form>
+
+            <!-- Bottom Contact & Location Information -->
+            <h2 class="section-title">Emergency Contact & Location</h2>
+            <div class="emergency-banner">
+                <strong>Emergency Notice:</strong> All contacts below function as immediate emergency responders. You can call, SMS, or message on WhatsApp directly.
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-grid">
+                    <div class="contact-group">
+                        <h3>Location & Coverage</h3>
+                        <p><strong>Address:</strong> Koronbo Lane, Wellington (PMB)</p>
+                        <p style="margin-top: 10px; font-weight: 500; color: var(--primary-dark);">📍 Serving communities across Sierra Leone</p>
+                    </div>
+
+                    <div class="contact-group">
+                        <h3>Emergency Contact Lines</h3>
+                        
+                        <!-- Line 1 -->
+                        <div class="phone-row">
+                            <span style="font-weight: 600; font-size: 0.9rem;">+232 75 196 643</span>
+                            <div class="phone-actions">
+                                <a href="tel:+23275196643" class="action-chip action-call">Call</a>
+                                <a href="https://wa.me/23275196643" target="_blank" rel="noopener" class="action-chip action-wa">WhatsApp</a>
+                                <a href="sms:+23275196643" class="action-chip action-sms">SMS</a>
+                            </div>
+                        </div>
+
+                        <!-- Line 2 -->
+                        <div class="phone-row">
+                            <span style="font-weight: 600; font-size: 0.9rem;">+232 30 070 521</span>
+                            <div class="phone-actions">
+                                <a href="tel:+23230070521" class="action-chip action-call">Call</a>
+                                <a href="https://wa.me/23230070521" target="_blank" rel="noopener" class="action-chip action-wa">WhatsApp</a>
+                                <a href="sms:+23230070521" class="action-chip action-sms">SMS</a>
+                            </div>
+                        </div>
+
+                        <!-- Line 3 -->
+                        <div class="phone-row">
+                            <span style="font-weight: 600; font-size: 0.9rem;">+232 34 844 112</span>
+                            <div class="phone-actions">
+                                <a href="tel:+23234844112" class="action-chip action-call">Call</a>
+                                <a href="https://wa.me/23234844112" target="_blank" rel="noopener" class="action-chip action-wa">WhatsApp</a>
+                                <a href="sms:+23234844112" class="action-chip action-sms">SMS</a>
+                            </div>
+                        </div>
+
+                        <!-- Emergency Line 4 -->
+                        <div class="phone-row">
+                            <span style="font-weight: 600; font-size: 0.9rem; color: var(--accent-emergency);">+232 33 285 499 (Hotline)</span>
+                            <div class="phone-actions">
+                                <a href="tel:+23233285499" class="action-chip action-call">Call</a>
+                                <a href="https://wa.me/23233285499" target="_blank" rel="noopener" class="action-chip action-wa">WhatsApp</a>
+                                <a href="sms:+23233285499" class="action-chip action-sms">SMS</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-group" style="grid-column: 1 / -1;">
+                        <h3>Direct Email Addresses</h3>
+                        <p><a href="mailto:luqmanfodaybangura@gmail.com" style="color: var(--primary); text-decoration: none;">luqmanfodaybangura@gmail.com</a></p>
+                        <p><a href="mailto:Kamaraibrahim476@gmail.com" style="color: var(--primary); text-decoration: none;">Kamaraibrahim476@gmail.com</a></p>
+                        <p><a href="mailto:mansarayahmed547@gmail.com" style="color: var(--primary); text-decoration: none;">mansarayahmed547@gmail.com</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Good Neighbors — Healthcare where you need it.</p>
+        </footer>
+    </div>
+
+<script>
+    // State Management
+    let currentLanguage = 'krio';
+    let aiStep = 0;
+
+    // Toggle Language
+    function setLanguage(lang) {
+        currentLanguage = lang;
+        document.getElementById('btn-krio').classList.toggle('active', lang === 'krio');
+        document.getElementById('btn-en').classList.toggle('active', lang === 'english');
+
+        const initialMsg = document.getElementById('initialBotMsg');
+        if (lang === 'krio') {
+            initialMsg.innerHTML = "<strong>AI Assistant:</strong> Kusheh! Welcome to Good Neighbors Home Healthcare. Wetin de do you today? Describe how you de feel.";
+        } else {
+            initialMsg.innerHTML = "<strong>AI Assistant:</strong> Hello! Welcome to Good Neighbors Home Healthcare. What health issue are you experiencing today?";
+        }
+    }
+
+    // AI Assistant Triage Flow
+    function sendMessage() {
+        const inputField = document.getElementById('userInput');
+        const text = inputField.value.trim();
+        if (!text) return;
+
+        const chatBox = document.getElementById('chatBox');
+
+        // Append User Message
+        const userDiv = document.createElement('div');
+        userDiv.className = 'chat-msg user-msg';
+        userDiv.textContent = text;
+        chatBox.appendChild(userDiv);
+
+        inputField.value = '';
+        chatBox.scrollTop = chatBox.scrollHeight;
+
+        // Dynamic AI Responses based on Language
+        setTimeout(() => {
+            const botDiv = document.createElement('div');
+            botDiv.className = 'chat-msg bot-msg';
+
+            if (aiStep === 0) {
+                botDiv.innerHTML = currentLanguage === 'krio' 
+                    ? "<strong>AI Assistant:</strong> Tenki for sharing. How long dis body pain or sickness dey worry you? (How many days or hours?)" 
+                    : "<strong>AI Assistant:</strong> Thank you for sharing. How long have you been experiencing these symptoms?";
+                aiStep++;
+            } else if (aiStep === 1) {
+                botDiv.innerHTML = currentLanguage === 'krio' 
+                    ? "<strong>AI Assistant:</strong> E important make you get care quick. Abeg fill the form below dis chat and click WhatsApp, SMS or Email make we connect immediately." 
+                    : "<strong>AI Assistant:</strong> Early medical assessment prevents complications. Please complete the form below so our responders can attend to you immediately.";
+                aiStep++;
+            } else {
+                botDiv.innerHTML = currentLanguage === 'krio' 
+                    ? "<strong>AI Assistant:</strong> Make sure your address and phone number write fine in the form so we doctor go locate you easily." 
+                    : "<strong>AI Assistant:</strong> Please verify that your contact details and address are correct before submitting.";
+            }
+
+            chatBox.appendChild(botDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }, 600);
+    }
+
+    // Helper: Safe text clipboard copy with fallbacks for non-secure contexts
+    async function copyToClipboard(text) {
+        if (navigator.clipboard && window.isSecureContext) {
+            try {
+                await navigator.clipboard.writeText(text);
+                return true;
+            } catch (err) {
+                console.warn('Clipboard API failed, using fallback:', err);
+            }
+        }
+        // Fallback for non-HTTPS or legacy browsers
+        const textArea = document.createElement("textarea");
+        textArea.value = text;
+        textArea.style.position = "fixed";
+        textArea.style.left = "-999999px";
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        let success = false;
+        try {
+            success = document.execCommand('copy');
+        } catch (err) {
+            console.error('Fallback copy failed:', err);
+        }
+        document.body.removeChild(textArea);
+        return success;
+    }
+
+    // Extract Form Payload
+    function getFormData() {
+        const name = document.getElementById('fullName').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const address = document.getElementById('address').value.trim();
+        const notes = document.getElementById('additionalDetails').value.trim();
+        const fileInput = document.getElementById('medicalFile');
+
+        if (!name || !phone || !address) {
+            alert('Please fill in your Name, Phone Number, and Address before sending.');
+            return null;
+        }
+
+        const selectedSicknesses = Array.from(document.querySelectorAll('input[name="sickness"]:checked'))
+            .map(el => el.value);
+
+        if (selectedSicknesses.length === 0 && !notes) {
+            alert('Please select at least one condition or describe your symptoms.');
+            return null;
+        }
+
+        let fileNotice = fileInput.files.length > 0 ? `\n*Attached File:* ${fileInput.files[0].name}` : '';
+
+        let message = `*GOOD NEIGHBORS - PATIENT MEDICAL REQUEST*\n\n`;
+        message += `*Name:* ${name}\n`;
+        message += `*Phone:* ${phone}\n`;
+        message += `*Address:* ${address}\n`;
+        message += `*Symptoms:* ${selectedSicknesses.join(', ') || 'None selected'}\n`;
+        if (notes) message += `*Notes:* ${notes}\n`;
+        message += fileNotice;
+
+        return { name, phone, address, selectedSicknesses: selectedSicknesses.join(', '), notes, message };
+    }
+
+    // Dispatch Handler for WhatsApp, SMS, and Email
+    async function dispatchRequest(channel) {
+        const data = getFormData();
+        if (!data) return;
+
+        const primaryEmergencyPhone = "23275196643";
+        const emergencyEmails = [
+            "luqmanfodaybangura@gmail.com",
+            "Kamaraibrahim476@gmail.com",
+            "mansarayahmed547@gmail.com"
+        ];
+
+        if (channel === 'wa-direct') {
+            const url = `https://wa.me/${primaryEmergencyPhone}?text=${encodeURIComponent(data.message)}`;
+            window.open(url, '_blank');
+        } 
+        else if (channel === 'wa-group') {
+            await copyToClipboard(data.message);
+            alert('Request copied! Paste it into the WhatsApp group window that opens.');
+            window.open("https://chat.whatsapp.com/JsqMdIcyWLmGXZ52lbdR2X", '_blank');
+        } 
+        else if (channel === 'sms') {
+            const primarySms = `+${primaryEmergencyPhone}`;
+            const smsUrl = `sms:${primarySms}?body=${encodeURIComponent(data.message)}`;
+            window.location.href = smsUrl;
+        } 
+        else if (channel === 'email') {
+            const recipients = emergencyEmails.join(',');
+            const subject = encodeURIComponent(`EMERGENCY MEDICAL REQUEST: ${data.name}`);
+            const body = encodeURIComponent(data.message);
+            window.location.href = `mailto:${recipients}?subject=${subject}&body=${body}`;
+        }
+    }
+</script>
+</body>
+</html>
